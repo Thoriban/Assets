@@ -20,7 +20,7 @@ public class DataControl : MonoBehaviour
     {
         if (destination == "")
         {
-            destination = Application.dataPath + "/Resources/";
+            destination = Application.dataPath + "/Data/";
         }
 
         switch (dataType)
@@ -122,10 +122,10 @@ public class DataControl : MonoBehaviour
         Game game = new Game();
 
         FileStream fileStream;
-        TextAsset txt = (TextAsset)Resources.Load(filePath, typeof(TextAsset));
-        string content = txt.text;
+        //TextAsset txt = (TextAsset)Resources.Load(filePath, typeof(TextAsset));
+        //string content = txt.text;
 
-        Log.Write(content);
+        //Log.Write(content);
 
         if (File.Exists(filePath))
         {

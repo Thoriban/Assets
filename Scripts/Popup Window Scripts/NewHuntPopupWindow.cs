@@ -65,7 +65,7 @@ public class NewHuntPopupWindow : MonoBehaviour
     public void PopulateGames()
     {
         List<string> options = new List<string>();
-        Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Resources/Pokemon/" + pokemonName + ".dat");
+        Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Data/Pokemon/" + pokemonName + ".dat");
 
         options.Add("<i>Select Game</i>");
         foreach (string game in pokemon.availableGames)
@@ -100,7 +100,7 @@ public class NewHuntPopupWindow : MonoBehaviour
     void PopulateMethods(string game)
     {
         List<string> options = new List<string>();
-        Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Resources/Pokemon/" + pokemonName + ".dat");
+        Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Data/Pokemon/" + pokemonName + ".dat");
 
         options.Add("<i>Select Shiny Hunting Method</i>");
         if (game == "")
@@ -113,11 +113,11 @@ public class NewHuntPopupWindow : MonoBehaviour
         }
         else
         {
-            string[] methods = Directory.GetFiles(Application.dataPath + "/Resources/Shiny Hunting Method/" + game + "/", "*.dat", SearchOption.AllDirectories);
+            string[] methods = Directory.GetFiles(Application.dataPath + "/Data/Shiny Hunting Method/" + game + "/", "*.dat", SearchOption.AllDirectories);
 
             for (int i = 0; i < methods.Length; i++)
             {
-                methods[i] = methods[i].Replace(Application.dataPath + "/Resources/Shiny Hunting Method/" + game + "/", string.Empty);
+                methods[i] = methods[i].Replace(Application.dataPath + "/Data/Shiny Hunting Method/" + game + "/", string.Empty);
                 methods[i] = methods[i].Replace(".dat", string.Empty);
             }
 
@@ -138,17 +138,17 @@ public class NewHuntPopupWindow : MonoBehaviour
     {
         if (methodDropdown.value != 0)
         {
-            ShinyMethod fullOddsMethod = DataControl.LoadShinyHuntingMethod(Application.dataPath + "/Resources/Shiny Hunting Method/" + gameDropdown.captionText.text + "/Full Odds.dat");
+            ShinyMethod fullOddsMethod = DataControl.LoadShinyHuntingMethod(Application.dataPath + "/Data/Shiny Hunting Method/" + gameDropdown.captionText.text + "/Full Odds.dat");
 
             string text = "Base Odds: " + fullOddsMethod.ConvertDecimalToFraction(fullOddsMethod.baseOddsValues[0]);
             baseOddsTextBox.text = text;
 
             //string gameName = gameDropdown.captionText.text.Replace("Pokemon ", "");
-            //Game game = DataControl.LoadGame(Application.dataPath + "/Resources/Game/" + gameName + ".dat");
+            //Game game = DataControl.LoadGame(Application.dataPath + "/Data/Game/" + gameName + ".dat");
             //if (game.shinyCharmAvailable)
             //{
 
-            ShinyMethod method = DataControl.LoadShinyHuntingMethod(Application.dataPath + "/Resources/Shiny Hunting Method/" + gameDropdown.captionText.text + "/" + methodDropdown.captionText.text + ".dat");
+            ShinyMethod method = DataControl.LoadShinyHuntingMethod(Application.dataPath + "/Data/Shiny Hunting Method/" + gameDropdown.captionText.text + "/" + methodDropdown.captionText.text + ".dat");
             bestOddsTextBox.text = "Best Odds: " + method.ConvertDecimalToFraction(method.shinyCharmOddsValues[method.shinyCharmOddsValues.Length - 1]);
             //}
 

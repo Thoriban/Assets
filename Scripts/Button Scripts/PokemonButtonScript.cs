@@ -30,8 +30,8 @@ public class PokemonButtonScript : MonoBehaviour
                 NewHuntPage newHuntPageScript = GameObject.Find("Main Camera").GetComponent<NewHuntPage>();
                 newHuntPageScript.newHuntPopupWindow.SetActive(true);
                 newHuntPageScript.newHuntPopupWindow.UpdatePokemonInfo(pokemonName);
-                newHuntPageScript.newHuntPopupWindow.UpdateRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Caught/Normal/" + pokemonName + ".png");
-                newHuntPageScript.newHuntPopupWindow.UpdateShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Caught/Shiny/" + pokemonName + ".png");
+                newHuntPageScript.newHuntPopupWindow.UpdateRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Normal/" + pokemonName + ".png");
+                newHuntPageScript.newHuntPopupWindow.UpdateShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Shiny/" + pokemonName + ".png");
                 newHuntPageScript.newHuntPopupWindow.PopulateGames();
                 break;
         }

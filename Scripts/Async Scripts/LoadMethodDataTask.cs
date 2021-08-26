@@ -110,7 +110,7 @@ public class LoadMethodDataTask : ThreadedJob
 
             method.availablePokemon = availablePokemon.ToArray();
 
-            method.Save(appDataPath + "/Resources/", columns[1]);
+            method.Save(appDataPath + "/Data/", columns[1]);
         }
     }
 

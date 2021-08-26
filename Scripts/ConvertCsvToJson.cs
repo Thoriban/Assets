@@ -63,7 +63,6 @@ public class ConvertCsvToJson : MonoBehaviour
         foreach (Pokemon pokemon in appController.pokemon)
         {
             jsonString = JsonUtility.ToJson(pokemon);
-            Debug.Log(jsonString);
         }
 
         //string jsonString = File.ReadAllText(Application.dataPath + "/Resources/json Files/Pokemon Game Import.json");

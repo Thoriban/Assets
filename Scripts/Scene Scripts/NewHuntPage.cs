@@ -116,7 +116,7 @@ public class NewHuntPage : MonoBehaviour
         script.dexNumber = dexNumber;
         script.pokemonName = pokemonName;
 
-        LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Caught/Normal/" + pokemonName + ".png"); //ADKJ - Change to Shiny once images are made
+        LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Normal/" + pokemonName + ".png"); //ADKJ - Change to Shiny once images are made
 
         Text text = icon.GetComponentInChildren<Text>();
         text.gameObject.transform.name = pokemonName + " Text Box";

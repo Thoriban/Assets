@@ -38,7 +38,7 @@ public class ViewPokemonDataPage : MonoBehaviour
     {
         if (selector.value != 0)
         {
-            Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Resources/Pokemon/" + selector.captionText.text + ".dat");
+            Pokemon pokemon = DataControl.LoadPokemon(Application.dataPath + "/Data/Pokemon/" + selector.captionText.text + ".dat");
             string dexNumber = "#";
             string textBoxText = "";
 
@@ -64,33 +64,33 @@ public class ViewPokemonDataPage : MonoBehaviour
 
             textBoxText += "\n<b>Evolution:</b>";
 
-            //if (pokemon.evolutionTree.evolutionsFromNode.Length != 0)
-            //{
-            //    foreach (EvolutionTreeNode evolution in pokemon.evolutionTree.evolutionsFromNode)
-            //    {
-            //        Debug.Log(pokemon.evolutionTree.pokemon);
-            //        textBoxText += pokemon.evolutionTree.pokemon + " evolves by " + evolution.methodToReachNode + " into " + evolution.pokemon;
-                    
-            //        if (evolution.evolutionsFromNode.Length != 0)
-            //        {
-            //            for (int i = 0; i < evolution.evolutionsFromNode.Length; i++)
-            //            {
-            //                textBoxText += " evolves by " + evolution.evolutionsFromNode[i].methodToReachNode + " into " + evolution.evolutionsFromNode[i].pokemon;
+            if (pokemon.evolutionTree.evolutionsFromNode.Length != 0)
+            {
+                foreach (EvolutionTreeNode evolution in pokemon.evolutionTree.evolutionsFromNode)
+                {
+                    Debug.Log(pokemon.evolutionTree.pokemon);
+                    textBoxText += pokemon.evolutionTree.pokemon + " evolves by " + evolution.methodToReachNode + " into " + evolution.pokemon;
 
-            //                if (i != evolution.evolutionsFromNode.Length - 1)
-            //                {
-            //                    textBoxText += " or it ";
-            //                }
-            //            }
-            //        }
-                    
-            //        textBoxText += "\n";
-            //    }
-            //}
-            //else
-            //{
-            //    textBoxText += pokemon.evolutionTree.pokemon + " is not know to evolve into any pokemon.";
-            //}
+                    if (evolution.evolutionsFromNode.Length != 0)
+                    {
+                        for (int i = 0; i < evolution.evolutionsFromNode.Length; i++)
+                        {
+                            textBoxText += " evolves by " + evolution.evolutionsFromNode[i].methodToReachNode + " into " + evolution.evolutionsFromNode[i].pokemon;
+
+                            if (i != evolution.evolutionsFromNode.Length - 1)
+                            {
+                                textBoxText += " or it ";
+                            }
+                        }
+                    }
+
+                    textBoxText += "\n";
+                }
+            }
+            else
+            {
+                textBoxText += pokemon.evolutionTree.pokemon + " is not know to evolve into any pokemon.";
+            }
 
             infoTextBox.text = textBoxText;
         }

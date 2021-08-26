@@ -66,7 +66,7 @@ public class LoadGameDataTask : ThreadedJob
 
             game.locations = locations.ToArray();
 
-            string[] pokemonFiles = Directory.GetFiles(appDataPath + "/Resources/Pokemon/", "*.dat", SearchOption.AllDirectories);
+            string[] pokemonFiles = Directory.GetFiles(appDataPath + "/Data/Pokemon/", "*.dat", SearchOption.AllDirectories);
 
             List<string> files = new List<string>();
             List<string> availablePokemon = new List<string>();
@@ -98,7 +98,7 @@ public class LoadGameDataTask : ThreadedJob
 
             game.availablePokemon = availablePokemon.ToArray();
 
-            string shinyHuntingPath = appDataPath + "/Resources/Shiny Hunting Method/Pokemon " + columns[0];
+            string shinyHuntingPath = appDataPath + "/Data/Shiny Hunting Method/Pokemon " + columns[0];
 
             if (Directory.Exists(shinyHuntingPath))
             {
@@ -123,7 +123,7 @@ public class LoadGameDataTask : ThreadedJob
                 game.availableMethods = availableMethods.ToArray();
             }
 
-            game.Save(appDataPath + "/Resources/");
+            game.Save(appDataPath + "/Data/");
         }
     }
 

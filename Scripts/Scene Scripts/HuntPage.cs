@@ -31,7 +31,7 @@ public class HuntPage : MonoBehaviour
 
         if (appController.huntId != "")
         {
-            hunt = DataControl.LoadShinyHunt(Application.dataPath + "/Resources/Shiny Hunts/" + appController.huntId + ".dat");
+            hunt = DataControl.LoadShinyHunt(Application.dataPath + "/Data/Shiny Hunts/" + appController.huntId + ".dat");
         }
         else
         {
@@ -61,8 +61,8 @@ public class HuntPage : MonoBehaviour
         if (hunt.pokemon != "")
         {
             pokemonNameTextBox.text = hunt.pokemon;
-            SetRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Caught/Normal/" + hunt.pokemon + ".png");
-            SetShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Caught/Shiny/" + hunt.pokemon + ".png");
+            SetRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Normal/" + hunt.pokemon + ".png");
+            SetShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Shiny/" + hunt.pokemon + ".png");
         }
         else
         {

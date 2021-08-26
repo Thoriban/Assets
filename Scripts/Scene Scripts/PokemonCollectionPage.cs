@@ -158,7 +158,7 @@ public class PokemonCollectionPage : MonoBehaviour
             icon.transform.SetParent(gridLayout.transform);
             icon.transform.name = pokemonName + " Icon";
 
-            LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Caught/" + collectionVersion + "/" + pokemonName + ".png");
+            LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/" + collectionVersion + "/" + pokemonName + ".png");
         }
         else
         {
@@ -170,7 +170,7 @@ public class PokemonCollectionPage : MonoBehaviour
             script.dexNumber = dexNumber;
             script.pokemonName = pokemonName;
 
-            LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Missing/" + pokemonName + ".png");
+            LoadArt(icon, Application.dataPath + "/Art Assets/Pokemon/Buttons/Missing/" + pokemonName + ".png");
         }
 
         Text text = icon.GetComponentInChildren<Text>();

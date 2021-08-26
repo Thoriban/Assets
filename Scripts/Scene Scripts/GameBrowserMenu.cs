@@ -24,7 +24,7 @@ public class GameBrowserMenu : MonoBehaviour
     void GetGames()
     {
         games = new Dictionary<string, Game>();
-        string[] gamePaths = Directory.GetFiles(Application.dataPath + "/Resources/Game/");
+        string[] gamePaths = Directory.GetFiles(Application.dataPath + "/Data/Game/");
 
         foreach (string path in gamePaths)
         {
@@ -32,7 +32,7 @@ public class GameBrowserMenu : MonoBehaviour
             {
                 Game game = DataControl.LoadGame(path);
 
-                string gameName = path.Replace(Application.dataPath + "/Resources/Game/", "");
+                string gameName = path.Replace(Application.dataPath + "/Data/Game/", "");
                 gameName = gameName.Replace(".dat", "");
                 games.Add(gameName, game);
             }

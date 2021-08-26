@@ -78,6 +78,7 @@ public class ImportScript : MonoBehaviour
 
     void Start()
     {
+        appController = GameObject.Find("AppController").GetComponent<AppController>();
         appDataPath = Application.persistentDataPath;
         appStreamDataPath = Application.streamingAssetsPath;
         pokemonFiles = new List<Pokemon>();
@@ -270,7 +271,7 @@ public class ImportScript : MonoBehaviour
 
     void LoadPokemonGameData(string filePath)
     {
-        string[] allPokemonFilePaths = Directory.GetFiles(appStreamDataPath + "/Resources/Pokemon/", "*.dat", SearchOption.AllDirectories);
+        string[] allPokemonFilePaths = Directory.GetFiles(Application.dataPath + "/Data/Pokemon/", "*.dat", SearchOption.AllDirectories);
         List<string> existingPokemonFilePaths = new List<string>();
 
         foreach (string pokemonFilePath in allPokemonFilePaths)
