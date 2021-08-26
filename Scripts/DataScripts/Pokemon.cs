@@ -53,7 +53,7 @@ public class Pokemon
 
     public Pokemon(string name, int dexNumber, string generation, int evolutionStage, string eggGroup1,
         string eggGroup2, string type1, string type2, EvolutionTreeNode evolutionTree, string[] availableGames,
-        string availableInGo, string availableShinyInGo, string[] availableMethods, 
+        string availableInGo, string availableShinyInGo, string[] availableMethods,
         RouteList[] availableLocations, float bestOdds, string[] bestMethods, string[] bestGames,
         string alolanForm, string galarianForm, string[] alternateForms, bool hasMegaEvolution,
         string[] megaEvolutionForms, bool hasGigantamaxForm)
@@ -181,7 +181,7 @@ public class Pokemon
             {
                 Log.Write("  ○ " + location.routeNames[i]);
                 Log.Write("  ○ " + location.encounterTypes[i]);
-                Log.Write("  ○ " + location.encounterDescriptions[i]); 
+                Log.Write("  ○ " + location.encounterDescriptions[i]);
             }
         }
 
@@ -240,5 +240,75 @@ public class Pokemon
             Log.Write("• " + form);
         }
 
+    }
+
+    public string ConvertToJson()
+    {
+        string result = "";
+
+        result += addField("name", name);
+        result += addField("dexNumber", dexNumber.ToString());
+        result += addField("generation", generation);
+        result += addField("evolutionStage", evolutionStage.ToString());
+
+        result += addArrayOpening("eggGroup");
+        result += addField("Group 1", eggGroup1);
+        result += addField("Group 2", eggGroup2);
+        result += closeArray();
+
+        result += addArrayOpening("types");
+        result += addField("type 1", type1);
+        result += addField("type 2", type2);
+        result += closeArray();
+
+        result += addArrayOpening("Evolution Tree");        
+        result += addField("pokemon", evolutionTree.pokemon);
+        result += addField("methodToReachNode", evolutionTree.methodToReachNode);
+        result += addField("numRequirementToReachNode", evolutionTree.numRequirementToReachNode.ToString());       
+        result += addArrayOpening("evolutionsFromNode");
+        for (int i = 0; i < evolutionTree.evolutionsFromNode.Length; i++)
+        {
+            result += addField("pokemon", evolutionTree.pokemon);
+            result += addField("methodToReachNode", evolutionTree.methodToReachNode);
+            result += addField("numRequirementToReachNode", evolutionTree.numRequirementToReachNode.ToString());
+
+            result += addArrayOpening("evolutionsFromNode");
+            for (int j = 0; j < evolutionTree.evolutionsFromNode.Length; j++)
+            {
+                result += addField("pokemon", evolutionTree.pokemon);
+                result += addField("methodToReachNode", evolutionTree.methodToReachNode);
+                result += addField("numRequirementToReachNode", evolutionTree.numRequirementToReachNode.ToString());
+            }
+
+            result += closeArray();
+        }       
+        result += closeArray();        
+        result += closeArray();
+
+        result += addArrayOpening("availableGames");
+        for (int i = 0; i < availableGames.Length; i++)
+        {
+            result += addField("game" + i, availableGames[i]);
+        }
+        result += closeArray();
+
+
+
+        return result;
+    }
+
+    string addField(string fieldName, string data)
+    {
+        return "\"" + fieldName + "\":\"" + data + "\",";
+    }
+
+    string addArrayOpening(string fieldName)
+    {
+        return "\"" + fieldName + "\":[{";
+    }
+
+    string closeArray()
+    {
+        return "}],";
     }
 }

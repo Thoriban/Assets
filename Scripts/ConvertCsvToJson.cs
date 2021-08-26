@@ -14,6 +14,7 @@ public class ConvertCsvToJson : MonoBehaviour
     private void Start()
     {
         appController = GameObject.Find("AppController").GetComponent<AppController>();
+        Debug.Log("count = "+appController.pokemon.Count);
         if (appController.pokemon.Count != 0)
         {
             SaveData();
@@ -52,28 +53,62 @@ public class ConvertCsvToJson : MonoBehaviour
         Game data = JsonUtility.FromJson<Game>(data_text);
         //patients_data = data;
         reader.Close();
-
     }
 
-    public void SaveData()
+    void SaveData()
     {
-        string path = "Assets/Resources/patients-data.json";
+        Debug.Log("here");
+        object jsonData = Resources.Load(Application.dataPath + "/Resources/json Files/Pokemon Game Import.json");
+        string jsonString = "";
+        foreach (Pokemon pokemon in appController.pokemon)
+        {
+            jsonString = JsonUtility.ToJson(pokemon);
+            Debug.Log(jsonString);
+        }
 
-        Pokemon[] pokemon_data = appController.pokemon.ToArray();
+        //string jsonString = File.ReadAllText(Application.dataPath + "/Resources/json Files/Pokemon Game Import.json");
 
-        Debug.Log(pokemon_data.Length);
+        Debug.Log(Application.dataPath + "/Resources/json Files/Pokemon Game Import.json");
+       
+        if (jsonData != null)
+        {
+            Debug.Log("jsonData = " + jsonData);
+        }
+        else
+        {
+            Debug.Log("jsonData is null");
+        }
 
-        StreamWriter writer = new StreamWriter(path, false);
-        string jsonData = JsonUtility.ToJson(pokemon_data[0].name, true);
 
-        //foreach (Pokemon pokemon in pokemon_data)
-        //{
-        //    jsonData = JsonUtility.ToJson(pokemon.name, true);
-        //}
-        //string jsonData = JsonUtility.ToJson(pokemon_data[0], false);
-
-        Debug.Log(jsonData);
-        writer.Write(jsonData);
-        writer.Close();
+        if (jsonString != "")
+        {
+            Debug.Log("jsonString = " + jsonData);
+        }
+        else
+        {
+            Debug.Log("jsonString is empty");
+        }
     }
+
+    //public void SaveData()
+    //{
+    //    string path = "Assets/Resources/patients-data.json";
+
+    //    Pokemon[] pokemon_data = appController.pokemon.ToArray();
+
+    //    Debug.Log(pokemon_data.Length);
+
+    //    StreamWriter writer = new StreamWriter(path, false);
+    //    string jsonData = JsonUtility.ToJson(pokemon_data[0].name, true);
+
+    //    //foreach (Pokemon pokemon in pokemon_data)
+    //    //{
+    //    //    jsonData = JsonUtility.ToJson(pokemon.name, true);
+    //    //}
+    //    //string jsonData = JsonUtility.ToJson(pokemon_data[0], false);
+
+    //    Debug.Log(jsonData);
+    //    writer.Write(jsonData);
+    //    writer.Close();
+    //}
 }

@@ -16,6 +16,8 @@ public class ViewPokemonDataPage : MonoBehaviour
 
     void Start()
     {
+
+        appController = GameObject.Find("AppController").GetComponent<AppController>();
         selector = GameObject.Find("Pokemon Selector").GetComponent<Dropdown>();
         dexNumberTextBox = GameObject.Find("Dex Number Text Box").GetComponent<Text>();
         infoTextBox = GameObject.Find("Info Text Box").GetComponent<Text>();
@@ -62,32 +64,33 @@ public class ViewPokemonDataPage : MonoBehaviour
 
             textBoxText += "\n<b>Evolution:</b>";
 
-            if (pokemon.evolutionTree.evolutionsFromNode.Length != 0)
-            {
-                foreach (EvolutionTreeNode evolution in pokemon.evolutionTree.evolutionsFromNode)
-                {
-                    textBoxText += pokemon.evolutionTree.pokemon + " evolves by " + evolution.methodToReachNode + " into " + evolution.pokemon;
+            //if (pokemon.evolutionTree.evolutionsFromNode.Length != 0)
+            //{
+            //    foreach (EvolutionTreeNode evolution in pokemon.evolutionTree.evolutionsFromNode)
+            //    {
+            //        Debug.Log(pokemon.evolutionTree.pokemon);
+            //        textBoxText += pokemon.evolutionTree.pokemon + " evolves by " + evolution.methodToReachNode + " into " + evolution.pokemon;
                     
-                    if (evolution.evolutionsFromNode.Length != 0)
-                    {
-                        for (int i = 0; i < evolution.evolutionsFromNode.Length; i++)
-                        {
-                            textBoxText += " evolves by " + evolution.evolutionsFromNode[i].methodToReachNode + " into " + evolution.evolutionsFromNode[i].pokemon;
+            //        if (evolution.evolutionsFromNode.Length != 0)
+            //        {
+            //            for (int i = 0; i < evolution.evolutionsFromNode.Length; i++)
+            //            {
+            //                textBoxText += " evolves by " + evolution.evolutionsFromNode[i].methodToReachNode + " into " + evolution.evolutionsFromNode[i].pokemon;
 
-                            if (i != evolution.evolutionsFromNode.Length - 1)
-                            {
-                                textBoxText += " or it ";
-                            }
-                        }
-                    }
+            //                if (i != evolution.evolutionsFromNode.Length - 1)
+            //                {
+            //                    textBoxText += " or it ";
+            //                }
+            //            }
+            //        }
                     
-                    textBoxText += "\n";
-                }
-            }
-            else
-            {
-                textBoxText += pokemon.evolutionTree.pokemon + " is not know to evolve into any pokemon.";
-            }
+            //        textBoxText += "\n";
+            //    }
+            //}
+            //else
+            //{
+            //    textBoxText += pokemon.evolutionTree.pokemon + " is not know to evolve into any pokemon.";
+            //}
 
             infoTextBox.text = textBoxText;
         }
