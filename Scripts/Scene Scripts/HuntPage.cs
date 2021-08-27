@@ -61,8 +61,8 @@ public class HuntPage : MonoBehaviour
         if (hunt.pokemon != "")
         {
             pokemonNameTextBox.text = hunt.pokemon;
-            SetRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Normal/" + hunt.pokemon + ".png");
-            SetShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Buttons/Caught/Shiny/" + hunt.pokemon + ".png");
+            SetRegularFilename(Application.dataPath + "/Art Assets/Pokemon/Sprites/Caught/Normal/" + hunt.pokemon + ".png");
+            SetShinyFilename(Application.dataPath + "/Art Assets/Pokemon/Sprites/Caught/Shiny/" + hunt.pokemon + ".png");
         }
         else
         {
